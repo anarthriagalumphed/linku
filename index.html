@@ -9,6 +9,23 @@
 
     <title>Link</title>
     <link rel="icon" type="image/png" href="img/logo_jadi.png">
+    <style>
+        /* Tambahkan CSS untuk efek transisi */
+        #profilePicture {
+            transition: opacity 1s ease-in-out;
+            opacity: 1;
+        }
+
+        /* Kelas untuk efek fade out */
+        .fade-out {
+            opacity: 0;
+        }
+
+        /* Kelas untuk efek fade in */
+        .fade-in {
+            opacity: 1;
+        }
+    </style>
 </head>
 
 <body>
@@ -19,7 +36,7 @@
         </label>
     </div>
     <div class="profile-container">
-        <img id="profilePicture" src="img/pp1.png" alt="Profile Picture">
+        <img id="profilePicture" src="img/pp1.png" alt="Profile Picture" data-index="1">
         <h1>GalihMahendra</h1>
         <div class="link-box" onclick="window.location='https://saweria.co/GalihMahendra';">
             <img src="img/saweria.png" alt="Saweria Icon">
@@ -45,7 +62,7 @@
                 <i class="fab fa-instagram-square"></i>
             </a>
             <a href="https://www.tiktok.com/@username" target="_blank">
-                <i class=" fab fa-tiktok"></i>
+                <i class="fab fa-tiktok"></i>
             </a>
             <a href="mailto:galihmahendrastudio@gmail.com">
                 <i class="fas fa-envelope"></i>
@@ -75,17 +92,32 @@
         function updateProfilePicture() {
             const profilePicture = document.getElementById('profilePicture');
             let currentPictureIndex = parseInt(profilePicture.dataset.index) || 1;
-            currentPictureIndex = (currentPictureIndex % 5) + 1; // Ganti 4 dengan jumlah gambar profil yang Anda miliki
-            profilePicture.src = `img/pp${currentPictureIndex}.png`;
-            profilePicture.dataset.index = currentPictureIndex;
+            currentPictureIndex = (currentPictureIndex % 5) + 1; // Ganti 5 dengan jumlah gambar profil yang Anda miliki
+
+            // Tambahkan kelas fade-out untuk memulai transisi
+            profilePicture.classList.add('fade-out');
+
+            // Ganti gambar setelah efek fade-out selesai
+            setTimeout(() => {
+                profilePicture.src = `img/pp${currentPictureIndex}.png`;
+                profilePicture.dataset.index = currentPictureIndex;
+
+                // Hapus kelas fade-out dan tambahkan kelas fade-in untuk memulai transisi fade-in
+                profilePicture.classList.remove('fade-out');
+                profilePicture.classList.add('fade-in');
+            }, 1000); // Durasi fade-out (1 detik)
+
+            // Hapus kelas fade-in setelah durasi fade-in selesai
+            setTimeout(() => {
+                profilePicture.classList.remove('fade-in');
+            }, 2000); // Durasi fade-out + fade-in (2 detik)
         }
 
         // Atur interval untuk memanggil fungsi updateProfilePicture setiap 30 detik
-        setInterval(updateProfilePicture, 10 * 1000); // Setiap 30 detik
+        setInterval(updateProfilePicture, 10 * 1000); // Setiap 10 detik
 
         // Panggil fungsi pertama kali
         updateProfilePicture();
-
     </script>
 </body>
 

@@ -362,3 +362,22 @@ input:checked+.slider:before {
     -ms-transition: all 0.125s ease-in;
     -o-transition: all 0.125s ease-in;
 }
+
+
+/* Tambahkan CSS untuk efek transisi */
+/* Tambahkan CSS untuk efek transisi */
+#profilePicture {
+    transition: opacity 1s ease-in-out;
+    opacity: 1;
+}
+
+/* Kelas untuk efek fade out */
+.fade-out {
+    opacity: 0;
+}
+
+/* Kelas untuk efek fade in */
+.fade-in {
+    opacity: 1;
+}
+
