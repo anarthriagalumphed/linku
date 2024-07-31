@@ -72,31 +72,16 @@
             }
         });
 
-        // Fungsi untuk mengganti foto profil
         function updateProfilePicture() {
             const profilePicture = document.getElementById('profilePicture');
-            const currentHour = new Date().getHours();
-            const lastUpdateDate = new Date(localStorage.getItem('lastUpdate'));
-
-            // Periksa apakah sudah melewati pukul 00.00 sejak pembaruan terakhir
-            if (currentHour >= 0 && currentHour < 1 && isNextDay(new Date(), lastUpdateDate)) {
-                let currentPictureIndex = localStorage.getItem('currentPictureIndex') || 1;
-                currentPictureIndex = (currentPictureIndex % 4) + 1; // Ganti 4 dengan jumlah gambar profil yang Anda miliki
-                profilePicture.src = `img/pp${currentPictureIndex}.png`;
-                localStorage.setItem('currentPictureIndex', currentPictureIndex);
-
-                // Simpan informasi terkini
-                localStorage.setItem('lastUpdate', new Date().toISOString());
-            }
+            let currentPictureIndex = parseInt(profilePicture.dataset.index) || 1;
+            currentPictureIndex = (currentPictureIndex % 5) + 1; // Ganti 4 dengan jumlah gambar profil yang Anda miliki
+            profilePicture.src = `img/pp${currentPictureIndex}.png`;
+            profilePicture.dataset.index = currentPictureIndex;
         }
 
-        // Fungsi untuk memeriksa apakah tanggal baru melewati tanggal lama
-        function isNextDay(newDate, oldDate) {
-            return newDate.toDateString() !== oldDate.toDateString();
-        }
-
-        // Atur interval untuk memanggil fungsi updateProfilePicture setiap menit
-        setInterval(updateProfilePicture, 60 * 1000); // Setiap menit
+        // Atur interval untuk memanggil fungsi updateProfilePicture setiap 30 detik
+        setInterval(updateProfilePicture, 10 * 1000); // Setiap 30 detik
 
         // Panggil fungsi pertama kali
         updateProfilePicture();
