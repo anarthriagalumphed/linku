@@ -1,0 +1,364 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #fff;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+    text-align: center;
+}
+
+.profile-container {
+    text-align: center;
+}
+
+.profile-container img {
+    width: 150px;
+    /* Sesuaikan dengan ukuran yang diinginkan untuk ikon */
+    height: 150px;
+    /* Sesuaikan dengan ukuran yang diinginkan untuk ikon */
+    border-radius: 50%;
+    /* Membuat gambar berbentuk lingkaran */
+    margin-right: 10px;
+    /* Jarak antara ikon dan teks */
+    object-fit: cover;
+}
+
+img {
+    width: 30px;
+    /* Sesuaikan dengan ukuran yang diinginkan untuk ikon */
+    height: 30px;
+    /* Sesuaikan dengan ukuran yang diinginkan untuk ikon */
+    border-radius: 50%;
+    /* Membuat gambar berbentuk lingkaran */
+    margin-right: 10px;
+    /* Jarak antara ikon dan teks */
+    object-fit: cover;
+}
+
+h1 {
+    margin-top: 10px;
+    color: #000000;
+}
+
+.links a {
+    display: block;
+    margin: 10px 0;
+    text-decoration: none;
+    color: #007BFF;
+}
+
+.social-icons {
+    margin-top: 20px;
+}
+
+/* Stil umum */
+
+@media only screen and (max-width: 600px) {
+
+    /* Stil untuk layar berukuran 600px atau kurang */
+    img {
+        width: 100%;
+        /* Gambar akan mengisi lebar layar pada layar kecil */
+    }
+
+    /* Tambahkan penyesuaian lainnya sesuai kebutuhan */
+}
+
+@media only screen and (min-width: 601px) and (max-width: 768px) {
+    /* Stil untuk layar berukuran 601px hingga 768px */
+}
+
+/* Tambahkan media queries tambahan sesuai kebutuhan */
+
+
+.links a {
+    display: block;
+    margin: 10px 0;
+    text-decoration: none;
+    color: #000000;
+    font-size: 16px;
+    /* Sesuaikan dengan ukuran yang sesuai */
+}
+
+@media only screen and (max-width: 600px) {
+    .links a {
+        font-size: 14px;
+        /* Sesuaikan ukuran font untuk layar kecil */
+    }
+}
+
+
+.link-box {
+    width: 600px;
+    margin: 10px auto;
+    padding: 15px;
+
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    display: flex;
+    /* Menggunakan display: flex */
+    align-items: center;
+    justify-content: space-between;
+    /* Menyusun elemen secara horizontal */
+    transition: transform 0.3s;
+}
+
+.link-box:hover {
+    transform: scale(1.1);
+    /*Membesarsaathover*/
+
+}
+
+
+
+.link-box span {
+    flex: 1;
+    font-size: 18px;
+
+    /* Membuat teks memenuhi sisa ruang yang tersedia */
+}
+
+@media only screen and (max-width: 600px) {
+    .link-box {
+        max-width: 300px;
+    }
+
+    .social-icons {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .social-icons a {
+        width: calc(33.33% - 5px);
+        margin: 0 2.0px;
+        box-sizing: border-box;
+        text-align: center;
+    }
+
+
+}
+
+
+
+.link-box img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+    object-fit: cover;
+}
+
+@media only screen and (max-width: 600px) {
+    .link-box {
+        padding: 10px;
+        /* Sesuaikan padding untuk layar kecil */
+    }
+
+    .link-box img {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+
+* {
+    box-sizing: border-box;
+}
+
+
+
+.social-icons {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 70px;
+}
+
+.social-icons i {
+    font-size: 35px;
+    color: #333;
+    background-color: #fff;
+    /* Warna latar belakang ikon */
+    padding: 10px;
+    /* Padding untuk memberikan ruang di sekitar ikon */
+    border-radius: 50%;
+    /* Untuk membuat ikon bulat */
+    margin: 0 5px;
+    transition: transform 0.3s;
+}
+
+.social-icons i:hover {
+    transform: scale(1.2);
+    -webkit-transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    -o-transform: scale(1.2);
+}
+
+
+/* Styles for the theme switch */
+.theme-switch-container {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 999;
+}
+
+.theme-switch {
+    position: fixed;
+    display: inline-block;
+    width: 40px;
+    /* Ubah lebar switch */
+    height: 24px;
+    /* Ubah tinggi switch */
+}
+
+.theme-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked+.slider {
+    background-color: #2196F3;
+}
+
+input:checked+.slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+
+
+/* Additional styles for Dark Mode */
+.dark-theme {
+    background-color: #333;
+    color: #fff;
+}
+
+.dark-theme h1 {
+    color: #fff;
+    /* Warna teks putih untuk h1 dalam dark mode */
+}
+
+.dark-theme .social-icons i {
+    color: #fff;
+    background-color: #333;
+}
+
+.dark-theme .link-box {
+    box-shadow: 0 10px 20px rgba(255, 255, 255, 0.2);
+}
+
+
+
+
+/* Follow me for more pens like this! */
+.toggle-control {
+    display: inline-block;
+    position: relative;
+    padding-left: 100px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    user-select: none;
+}
+
+.toggle-control input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.toggle-control input:checked~.control {
+    background-color: #4314d2;
+}
+
+.toggle-control input:checked~.control::before {
+    background: #4314d2;
+    left: 27px;
+    transform: scale(1);
+}
+
+.toggle-control input:checked~.control::after {
+    background: white;
+    left: 35px;
+}
+
+.toggle-control .control {
+    position: fixed;
+    /* Menggunakan posisi tetap agar selalu terlihat */
+    top: 10px;
+    right: 20px;
+    height: 30px;
+    width: 60px;
+    border-radius: 25px;
+    background-color: #62ccff;
+    transition: background-color 0.125s ease-in;
+}
+
+.toggle-control .control::before {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    left: 0px;
+    top: 2px;
+    border-radius: 50%;
+    transform: scale(0);
+    background: #62ccff;
+    z-index: 5;
+    transition: all 0.125s ease-in;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
+
+.toggle-control .control::after {
+    content: "";
+    position: absolute;
+    left: 5px;
+    top: 5px;
+    width: 20px;
+    height: 20px;
+    border-radius: 25px;
+    background: #fff89e;
+    transition: all 0.125s ease-in;
+    -webkit-transition: all 0.125s ease-in;
+    -moz-transition: all 0.125s ease-in;
+    -ms-transition: all 0.125s ease-in;
+    -o-transition: all 0.125s ease-in;
+}

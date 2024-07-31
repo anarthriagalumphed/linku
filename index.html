@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <title>Link</title>
+    <link rel="icon" type="image/png" href="img/logo_jadi.png">
+</head>
+
+<body>
+    <div class="theme-switch-container">
+        <label class="toggle-control">
+            <input type="checkbox" checked="checked">
+            <span class="control"></span>
+        </label>
+    </div>
+    <div class="profile-container">
+        <img id="profilePicture" src="img/pp1.png" alt="Profile Picture">
+        <h1>GalihMahendra</h1>
+        <div class="link-box" onclick="window.location='https://saweria.co/GalihMahendra';">
+            <img src="img/saweria.png" alt="Saweria Icon">
+            <span>Saweria</span>
+        </div>
+
+        <div class="link-box" onclick="window.location='https://sociabuzz.com/galihmahendra/tribe';">
+            <img src="img/sociabuzz.png" alt="Sociabuzz Icon">
+            <span>Sociabuzz</span>
+        </div>
+
+        <div class="social-icons">
+            <a href="https://discord.gg/X3KcdEr" target="_blank">
+                <i class="fab fa-discord"></i>
+            </a>
+            <a href="https://steamcommunity.com/profiles/76561199005875227" target="_blank">
+                <i class="fab fa-steam"></i>
+            </a>
+            <a href="https://www.youtube.com/channel/UCSBpO70xtWbB5I6NgTCM12w " target="_blank">
+                <i class="fab fa-youtube"></i>
+            </a>
+            <a href="https://www.instagram.com/galihmahendraputra_" target="_blank">
+                <i class="fab fa-instagram-square"></i>
+            </a>
+            <a href="https://www.tiktok.com/@username" target="_blank">
+                <i class=" fab fa-tiktok"></i>
+            </a>
+            <a href="mailto:galihmahendrastudio@gmail.com">
+                <i class="fas fa-envelope"></i>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        const checkbox = document.querySelector('.toggle-control input');
+
+        // Check for saved theme preference
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.classList.add('dark-theme');
+            checkbox.checked = true;
+        }
+
+        // Toggle dark mode on checkbox change
+        checkbox.addEventListener('change', function () {
+            document.body.classList.toggle('dark-theme');
+            if (document.body.classList.contains('dark-theme')) {
+                localStorage.setItem('theme', 'dark');
+            } else {
+                localStorage.setItem('theme', 'light');
+            }
+        });
+
+        // Fungsi untuk mengganti foto profil
+        function updateProfilePicture() {
+            const profilePicture = document.getElementById('profilePicture');
+            const currentHour = new Date().getHours();
+            const lastUpdateDate = new Date(localStorage.getItem('lastUpdate'));
+
+            // Periksa apakah sudah melewati pukul 00.00 sejak pembaruan terakhir
+            if (currentHour >= 0 && currentHour < 1 && isNextDay(new Date(), lastUpdateDate)) {
+                let currentPictureIndex = localStorage.getItem('currentPictureIndex') || 1;
+                currentPictureIndex = (currentPictureIndex % 4) + 1; // Ganti 4 dengan jumlah gambar profil yang Anda miliki
+                profilePicture.src = `img/pp${currentPictureIndex}.png`;
+                localStorage.setItem('currentPictureIndex', currentPictureIndex);
+
+                // Simpan informasi terkini
+                localStorage.setItem('lastUpdate', new Date().toISOString());
+            }
+        }
+
+        // Fungsi untuk memeriksa apakah tanggal baru melewati tanggal lama
+        function isNextDay(newDate, oldDate) {
+            return newDate.toDateString() !== oldDate.toDateString();
+        }
+
+        // Atur interval untuk memanggil fungsi updateProfilePicture setiap menit
+        setInterval(updateProfilePicture, 60 * 1000); // Setiap menit
+
+        // Panggil fungsi pertama kali
+        updateProfilePicture();
+
+    </script>
+</body>
+
+</html>
